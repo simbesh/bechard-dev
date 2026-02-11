@@ -1,0 +1,894 @@
+---
+// Design 11: Folio — Clean bento portfolio inspired by Keya Vadgama & Aritro
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simon Bechard — Fullstack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="nav">
+      <span class="nav-name">Simon Bechard</span>
+      <div class="nav-links">
+        <a href="https://github.com/simbesh" target="_blank" rel="noopener"
+          >GitHub</a
+        >
+        <a
+          href="https://www.linkedin.com/in/simon-bechard-237470196/"
+          target="_blank"
+          rel="noopener">LinkedIn</a
+        >
+        <a href="mailto:simon@bechard.dev" class="nav-cta">Get in touch</a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <h1 class="hero-headline">
+          I like to <span class="hero-accent">automate</span> things<br />
+        </h1>
+        <div class="hero-meta">
+          <span class="hero-role"
+            >Configuration Engineer at <a
+              href="https://pricefx.com"
+              target="_blank"
+              rel="noopener"
+              style="cursor: pointer;"
+              ><img src="/pricefx.png" alt="PriceFX" class="hero-icon" /></a
+            ></span
+          >
+          <span class="hero-dot">·</span>
+          <span class="hero-location">Brisbane - Australia</span>
+          <span class="hero-dot">·</span>
+          <a href="mailto:simon@bechard.dev" class="hero-url"
+            >simon@bechard.dev</a
+          >
+        </div>
+      </section>
+
+      <!-- BIO -->
+      <section class="bio-section">
+        <img src="/me-square.png" alt="Simon Bechard" class="bio-avatar" />
+        <div class="bio-content">
+          <p class="bio-text">
+            I'm Simon — a fullstack developer and tech enthusiast who builds
+            things that make my life easier. I've automated my home, my trading
+            and my borthers hire business.
+          </p>
+        </div>
+      </section>
+
+      <!-- PROJECTS — Sequential column -->
+      <section class="projects">
+        <a
+          href="https://mrtrestle.com.au"
+          target="_blank"
+          rel="noopener"
+          class="project-card"
+        >
+          <div class="card-browser">
+            <div class="browser-bar">
+              <div class="browser-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="browser-url">mrtrestle.com.au</div>
+            </div>
+            <div class="browser-viewport">
+              <img
+                src="https://mrtrestle.com.au/og-image.jpg"
+                alt="MrTrestle — Brisbane trestle hire and scaffold equipment rental"
+                class="browser-img"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='/mrtrestle-screenshot.png'"
+              />
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="card-top">
+              <span class="card-label">Web Platform</span>
+              <span class="card-year">2025</span>
+            </div>
+            <h2 class="card-name">MrTrestle</h2>
+            <p class="card-desc">
+              My brothers equipment hire company. Features an instant quote and
+              online booking system. Admin dashboard for managing bookings and
+              inventory.
+            </p>
+            <span class="card-cta">Visit site ↗</span>
+          </div>
+        </a>
+
+        <a
+          href="https://coinstacker.com.au"
+          target="_blank"
+          rel="noopener"
+          class="project-card"
+        >
+          <div class="card-browser">
+            <div class="browser-bar">
+              <div class="browser-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="browser-url">coinstacker.com.au</div>
+            </div>
+            <div class="browser-viewport">
+              <img
+                src="https://opengraph.b-cdn.net/production/images/178c6278-ea1b-44d7-8fa7-e249c959486c.png?token=Auv-p_COy0vtMIaoFA74gBohN7st9GRM5jl0tJzaktY&height=630&width=1200&expires=33291583602"
+                alt="CoinStacker — Australian crypto price aggregator"
+                class="browser-img"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="card-top">
+              <span class="card-label">FinTech</span>
+              <span class="card-year">2025</span>
+            </div>
+            <h2 class="card-name">CoinStacker</h2>
+            <p class="card-desc">
+              Australian crypto price aggregator. Compare live exchange prices,
+              find the best deal, stack more coins.
+            </p>
+            <span class="card-cta">Visit site ↗</span>
+          </div>
+        </a>
+
+        <div class="project-card card-arby-wrap">
+          <div class="card-browser">
+            <div class="browser-bar">
+              <div class="browser-dots">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="browser-viewport">
+              <img
+                src="/arby-dash.jpg"
+                alt="CoinStacker — Australian crypto price aggregator"
+                class="browser-img"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="card-top">
+              <span class="card-label">Private Bot & Dashboard</span>
+              <span class="card-badge">Private</span>
+            </div>
+            <h2 class="card-name">Arby</h2>
+            <p class="card-desc">
+              Personal arbitrage bot & trading analytics dashboard. (not public)
+            </p>
+            <span class="card-cta muted">Screenshots coming soon</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTERESTS BENTO -->
+      <section class="bento">
+        <!-- Tech Interests — Wide card -->
+        <div class="card card-tech">
+          <h3 class="section-heading">What I'm into</h3>
+          <div class="interest-grid">
+            <div class="interest-chip">
+              <span class="chip-icon">🏠</span>
+              <div>
+                <span class="chip-name">Home Automation</span>
+                <span class="chip-sub">Home Assistant, always tinkering</span>
+              </div>
+            </div>
+            <div class="interest-chip">
+              <span class="chip-icon">🤖</span>
+              <div>
+                <span class="chip-name">LLM & Agentic Coding</span>
+                <span class="chip-sub">Cursor, Claude, autonomous agents</span>
+              </div>
+            </div>
+            <div class="interest-chip">
+              <span class="chip-icon">₿</span>
+              <div>
+                <span class="chip-name">Crypto</span>
+                <span class="chip-sub">Trader & investor</span>
+              </div>
+            </div>
+            <div class="interest-chip">
+              <span class="chip-icon">🖨️</span>
+              <div>
+                <span class="chip-name">3D Printing</span>
+                <span class="chip-sub"
+                  >Functional parts and toys for my toddler</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Life — Three small cards -->
+        <div class="card card-life card-padel">
+          <img src="/padel-racquet.png" alt="Padel" class="life-icon-img" />
+          <h3 class="life-name">Padel</h3>
+          <p class="life-desc">Weekly warrior</p>
+        </div>
+
+        <div class="card card-life card-gaming">
+          <span class="life-icon">🎮</span>
+          <h3 class="life-name">Gaming</h3>
+          <p class="life-desc">PC</p>
+        </div>
+
+        <div class="card card-life card-poker">
+          <span class="life-icon">♠️</span>
+          <h3 class="life-name">Poker</h3>
+          <p class="life-desc">Texas Hold'em</p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <span class="footer-copy">© 2026 Simon Bechard</span>
+          <div class="footer-links">
+            <a href="https://github.com/simbesh" target="_blank" rel="noopener"
+              >GitHub</a
+            >
+            <a
+              href="https://www.linkedin.com/in/simon-bechard-237470196/"
+              target="_blank"
+              rel="noopener">LinkedIn</a
+            >
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg: #fafafa;
+        --white: #ffffff;
+        --black: #111111;
+        --text: #333333;
+        --text-secondary: #777777;
+        --text-light: #aaaaaa;
+        --border: #eeeeee;
+        --accent: #e07a38;
+        --accent-light: #fef3eb;
+        --accent-dark: #c4622a;
+        --card-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+        --card-shadow-hover:
+          0 2px 8px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.06);
+        --radius: 16px;
+        --radius-sm: 10px;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          "Plus Jakarta Sans",
+          -apple-system,
+          sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+        font-weight: 400;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* NAV */
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 1.5rem 2rem;
+      }
+
+      .nav-name {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--black);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .nav-links a {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: var(--black);
+      }
+
+      .nav-cta {
+        background: var(--black) !important;
+        color: var(--white) !important;
+        padding: 0.5rem 1.2rem !important;
+        border-radius: 100px;
+        font-weight: 500 !important;
+        font-size: 0.82rem !important;
+        transition: opacity 0.2s !important;
+      }
+
+      .nav-cta:hover {
+        opacity: 0.85 !important;
+        color: var(--white) !important;
+      }
+
+      /* HERO */
+      .hero {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 4rem 2rem 2rem;
+      }
+
+      .hero-headline {
+        font-family: "Fraunces", serif;
+        font-size: clamp(2.5rem, 5.5vw, 4rem);
+        font-weight: 500;
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+        color: var(--black);
+        font-optical-sizing: auto;
+      }
+
+      .hero-accent {
+        font-style: italic;
+        color: var(--accent);
+      }
+
+      .hero-meta {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 0.75rem;
+        margin-top: 1.25rem;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      .hero-icon {
+        height: 2em;
+        width: auto;
+        vertical-align: middle;
+        margin-left: 0.15rem;
+        display: inline-block;
+      }
+
+      .hero-dot {
+        color: var(--text-light);
+      }
+
+      .hero-url {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .hero-url:hover {
+        text-decoration: underline;
+      }
+
+      /* BIO */
+      .bio-section {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 2rem;
+        display: flex;
+        gap: 1.5rem;
+        align-items: flex-start;
+      }
+
+      .bio-avatar {
+        width: 128px;
+        height: 128px;
+        border-radius: 20%;
+        object-fit: cover;
+        flex-shrink: 0;
+        border: 2px solid var(--border);
+      }
+
+      .bio-text {
+        font-size: 0.95rem;
+        color: var(--text);
+        line-height: 1.7;
+        max-width: 640px;
+      }
+
+      .bio-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 500;
+        padding: 0.3rem 0.75rem;
+        border-radius: 100px;
+        border: 1px solid var(--border);
+        color: var(--text-secondary);
+        background: var(--white);
+      }
+
+      /* PROJECTS COLUMN */
+      .projects {
+        max-width: 1080px;
+        margin: 1rem auto 0;
+        padding: 0 2rem 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .project-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        transition:
+          transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+          box-shadow 0.3s ease;
+        box-shadow: var(--card-shadow);
+      }
+
+      .project-card:hover {
+        box-shadow: var(--card-shadow-hover);
+      }
+
+      a.project-card:hover {
+        transform: translateY(-3px);
+      }
+
+      /* BENTO GRID (interests + life) */
+      .bento {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 2rem 2rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        grid-auto-rows: auto;
+      }
+
+      .card {
+        background: var(--white);
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        transition:
+          transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+          box-shadow 0.3s ease;
+        box-shadow: var(--card-shadow);
+      }
+
+      .card:hover {
+        box-shadow: var(--card-shadow-hover);
+      }
+
+      a.card:hover {
+        transform: translateY(-3px);
+      }
+
+      .card-tech {
+        grid-column: span 3;
+      }
+
+      .card-browser {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .browser-bar {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.6rem 0.85rem;
+        background: #f8f8f8;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .browser-dots {
+        display: flex;
+        gap: 5px;
+      }
+
+      .browser-dots span {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #ddd;
+      }
+
+      .browser-url {
+        font-size: 0.72rem;
+        color: var(--text-light);
+        background: #f0f0f0;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        flex: 1;
+        text-align: center;
+      }
+
+      .browser-viewport {
+        overflow: hidden;
+        background: #f0f0f0;
+      }
+
+      .browser-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+
+      a.project-card:hover .browser-img {
+        transform: scale(1.02);
+      }
+
+      .card-info {
+        padding: 1.25rem;
+      }
+
+      .card-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .card-label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: var(--accent-light);
+        padding: 0.2rem 0.6rem;
+        border-radius: 100px;
+      }
+
+      .card-year {
+        font-size: 0.75rem;
+        color: var(--text-light);
+      }
+
+      .card-badge {
+        font-size: 0.65rem;
+        font-weight: 500;
+        padding: 0.15rem 0.5rem;
+        border-radius: 100px;
+        border: 1px solid var(--border);
+        color: var(--text-light);
+      }
+
+      .card-name {
+        font-family: "Fraunces", serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--black);
+        margin-bottom: 0.35rem;
+        letter-spacing: -0.02em;
+      }
+
+      .card-desc {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        line-height: 1.55;
+        margin-bottom: 0.75rem;
+      }
+
+      .card-cta {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--accent);
+        display: inline-block;
+      }
+
+      .card-cta.muted {
+        color: var(--text-light);
+        font-weight: 400;
+      }
+
+      /* ARBY PLACEHOLDER */
+      .card-arby-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 140px;
+        background: linear-gradient(135deg, #f8f6f4, #f0ece6);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .lock-icon {
+        width: 36px;
+        height: 36px;
+        color: #ccc;
+      }
+
+      /* TECH INTERESTS CARD */
+      .card-tech {
+        padding: 1.5rem;
+      }
+
+      .section-heading {
+        font-family: "Fraunces", serif;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--black);
+        margin-bottom: 1rem;
+        letter-spacing: -0.01em;
+      }
+
+      .interest-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+      }
+
+      .interest-chip {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border);
+        transition:
+          border-color 0.2s,
+          background 0.2s;
+      }
+
+      .interest-chip:hover {
+        border-color: #ddd;
+        background: #fafafa;
+      }
+
+      .chip-icon {
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--bg);
+        border-radius: 10px;
+      }
+
+      .chip-name {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--black);
+      }
+
+      .chip-sub {
+        display: block;
+        font-size: 0.75rem;
+        color: var(--text-light);
+        margin-top: 0.1rem;
+      }
+
+      /* LIFE CARDS */
+      .card-life {
+        padding: 1.5rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 180px;
+      }
+
+      .life-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .life-icon-img {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+        margin-bottom: 0.75rem;
+        transform: rotate(45deg);
+      }
+
+      .life-name {
+        font-family: "Fraunces", serif;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--black);
+        margin-bottom: 0.35rem;
+      }
+
+      .life-desc {
+        font-size: 0.78rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        max-width: 200px;
+      }
+
+      .card-padel {
+        background: linear-gradient(160deg, #fff 60%, #f0f7f0);
+      }
+      .card-beer {
+        background: linear-gradient(160deg, #fff 60%, #fef8f0);
+      }
+      .card-poker {
+        background: linear-gradient(160deg, #fff 60%, #f0f0f8);
+      }
+
+      /* FOOTER */
+      .footer {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+      }
+
+      .footer-copy {
+        font-size: 0.8rem;
+        color: var(--text-light);
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .footer-links a {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .footer-links a:hover {
+        color: var(--black);
+      }
+
+      /* DESIGNS LINK */
+      .designs-link {
+        position: fixed;
+        top: 1.5rem;
+        right: 2rem;
+        z-index: 100;
+        font-size: 0.8rem;
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .designs-link:hover {
+        color: var(--black);
+      }
+
+      /* ANIMATIONS */
+      .hero {
+        animation: up 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
+      }
+      .bio-section {
+        animation: up 0.7s cubic-bezier(0.23, 1, 0.32, 1) 0.1s both;
+      }
+
+      .project-card,
+      .card {
+        animation: up 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+      }
+
+      .project-card:nth-child(1) {
+        animation-delay: 0.15s;
+      }
+      .project-card:nth-child(2) {
+        animation-delay: 0.25s;
+      }
+      .project-card:nth-child(3) {
+        animation-delay: 0.35s;
+      }
+      .card-tech {
+        animation-delay: 0.4s;
+      }
+      .card-padel {
+        animation-delay: 0.45s;
+      }
+      .card-beer {
+        animation-delay: 0.5s;
+      }
+      .card-poker {
+        animation-delay: 0.55s;
+      }
+
+      @keyframes up {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 860px) {
+        .bento {
+          grid-template-columns: 1fr 1fr;
+        }
+        .card-tech {
+          grid-column: span 2;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav {
+          padding: 1rem;
+        }
+        .nav-links a:not(.nav-cta) {
+          display: none;
+        }
+        .hero {
+          padding: 2.5rem 1.5rem 1.5rem;
+        }
+        .bio-section {
+          padding: 1.5rem;
+          flex-direction: column;
+        }
+        .projects {
+          padding: 0 1.5rem 1.5rem;
+        }
+        .bento {
+          grid-template-columns: 1fr;
+          padding: 0 1.5rem 1.5rem;
+        }
+        .card-tech {
+          grid-column: span 1;
+        }
+        .interest-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-meta {
+          flex-wrap: wrap;
+        }
+        .footer-inner {
+          flex-direction: column;
+          gap: 0.75rem;
+          text-align: center;
+        }
+      }
+    </style>
+  </body>
+</html>
