@@ -1,5 +1,12 @@
 ---
 import Analytics from "@vercel/analytics/astro";
+import { Image } from "astro:assets";
+import pricefxImg from "@/assets/pricefx.png";
+import meSquareImg from "@/assets/me-square.png";
+import mrtrestleImg from "@/assets/mrtrestle-screenshot.png";
+import coinStackerImg from "@/assets/coin-stacker.png";
+import arbyDashImg from "@/assets/arby-dash.png";
+import padelImg from "@/assets/padel-racquet.png";
 ---
 
 <html lang="en">
@@ -44,7 +51,7 @@ import Analytics from "@vercel/analytics/astro";
               target="_blank"
               rel="noopener"
               style="cursor: pointer;"
-              ><img src="/pricefx.png" alt="PriceFX" class="hero-icon" /></a
+              ><Image src={pricefxImg} alt="PriceFX" class="hero-icon" /></a
             ></span
           >
           <span class="hero-dot">·</span>
@@ -58,7 +65,7 @@ import Analytics from "@vercel/analytics/astro";
 
       <!-- BIO -->
       <section class="bio-section">
-        <img src="/me-square.png" alt="Simon Bechard" class="bio-avatar" />
+        <Image src={meSquareImg} alt="Simon Bechard" class="bio-avatar" />
         <div class="bio-content">
           <p class="bio-text">
             I'm Simon — a fullstack developer and tech enthusiast who builds
@@ -89,7 +96,7 @@ import Analytics from "@vercel/analytics/astro";
                 alt="MrTrestle — Brisbane trestle hire and scaffold equipment rental"
                 class="browser-img"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='/mrtrestle-screenshot.png'"
+                onerror={`this.onerror=null;this.src='${mrtrestleImg.src}'`}
               />
             </div>
           </div>
@@ -122,8 +129,8 @@ import Analytics from "@vercel/analytics/astro";
               <div class="browser-url">coinstacker.com.au</div>
             </div>
             <div class="browser-viewport">
-              <img
-                src="/coin-stacker.png"
+              <Image
+                src={coinStackerImg}
                 alt="CoinStacker — Australian crypto price aggregator"
                 class="browser-img"
                 loading="lazy"
@@ -152,8 +159,8 @@ import Analytics from "@vercel/analytics/astro";
               </div>
             </div>
             <div class="browser-viewport">
-              <img
-                src="/arby-dash.png"
+              <Image
+                src={arbyDashImg}
                 alt="CoinStacker — Australian crypto price aggregator"
                 class="browser-img"
                 loading="lazy"
@@ -215,7 +222,7 @@ import Analytics from "@vercel/analytics/astro";
 
         <!-- Life — Three small cards -->
         <div class="card card-life card-padel">
-          <img src="/padel-racquet.png" alt="Padel" class="life-icon-img" />
+          <Image src={padelImg} alt="Padel" class="life-icon-img" />
           <h3 class="life-name">Padel</h3>
           <p class="life-desc">Weekly warrior</p>
         </div>
