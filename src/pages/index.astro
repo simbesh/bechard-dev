@@ -1,20 +1,26 @@
 ---
 import Analytics from "@vercel/analytics/astro";
 import { Image } from "astro:assets";
+import HeadSEO from "@/components/HeadSEO.astro";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import pricefxImg from "@/assets/pricefx.png";
 import meSquareImg from "@/assets/me-square.png";
 import mrtrestleImg from "@/assets/mrtrestle-screenshot.png";
 import coinStackerImg from "@/assets/coin-stacker.png";
 import arbyDashImg from "@/assets/arby-dash.png";
 import padelImg from "@/assets/padel-racquet.png";
+import { Logos } from "@/components/icons/Logo";
 ---
 
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simon Bechard — Fullstack Developer</title>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <HeadSEO
+      title="Simon Bechard - Fullstack Developer"
+      description="Fullstack developer portfolio for Simon Bechard."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,824 +28,431 @@ import padelImg from "@/assets/padel-racquet.png";
       rel="stylesheet"
     />
   </head>
-  <body>
-    <nav class="nav">
-      <span class="nav-name">Simon Bechard</span>
-      <div class="nav-links">
-        <a href="https://github.com/simbesh" target="_blank" rel="noopener"
+  <body
+    class="min-h-screen overflow-x-hidden bg-[#fafafa] text-[#333] antialiased [font-family:'Plus_Jakarta_Sans',-apple-system,sans-serif]"
+  >
+    <nav
+      class="mx-auto flex w-full max-w-3xl items-center justify-between px-4 py-4 sm:px-8 sm:py-6"
+    >
+      <span class="text-[0.95rem] font-semibold text-[#111]">Simon Bechard</span
+      >
+      <div class="flex items-center gap-6">
+        <a
+          href="https://github.com/simbesh"
+          target="_blank"
+          rel="noopener"
+          class="hidden text-[0.85rem] text-[#777] transition-colors hover:text-[#111] sm:inline"
           >GitHub</a
         >
         <a
           href="https://www.linkedin.com/in/simon-bechard-237470196/"
           target="_blank"
-          rel="noopener">LinkedIn</a
+          rel="noopener"
+          class="hidden text-[0.85rem] text-[#777] transition-colors hover:text-[#111] sm:inline"
+          >LinkedIn</a
         >
-        <a href="mailto:simon@bechard.dev" class="nav-cta">Get in touch</a>
+        <a href="mailto:simon@bechard.dev">
+          <Button
+            className="h-auto rounded-full bg-[#111] px-5 py-2 text-[0.82rem] font-medium text-white hover:bg-[#111]/85"
+            >Get in touch</Button
+          >
+        </a>
       </div>
     </nav>
 
     <main>
-      <!-- HERO -->
-      <section class="hero">
-        <h1 class="hero-headline">
-          I like to <span class="hero-accent">automate</span> things<br />
+      <section
+        class="mx-auto max-w-3xl px-6 pb-8 pt-10 sm:px-8 sm:pb-8 sm:pt-16 animate-[up_0.7s_cubic-bezier(0.23,1,0.32,1)_both]"
+      >
+        <h1
+          class="text-[clamp(2.5rem,5.5vw,4rem)] leading-[1.15] tracking-[-0.03em] text-[#111] [font-family:'Fraunces',serif]"
+        >
+          I like to <span class="italic text-[#e07a38]">automate</span> things
         </h1>
-        <div class="hero-meta">
-          <span class="hero-role"
-            >Configuration Engineer at <a
+        <div
+          class="mt-5 flex flex-wrap items-center gap-x-1 gap-y-1 text-[0.9rem] font-semibold text-gray-500"
+        >
+          <span class="inline-flex items-center gap-1 px-2">
+            Senior Configuration Engineer at
+            <a
               href="https://pricefx.com"
               target="_blank"
               rel="noopener"
-              style="cursor: pointer;"
-              ><Image src={pricefxImg} alt="PriceFX" class="hero-icon" /></a
-            ></span
+              class="inline-flex items-center"
+            >
+              <Image
+                src={pricefxImg}
+                alt="PriceFX"
+                class="inline h-[1.8em] w-auto"
+              />
+            </a>
+          </span>
+          <span class="inline-flex items-center px-2">Brisbane – Australia</span
           >
-          <span class="hero-dot">·</span>
-          <span class="hero-location">Brisbane - Australia</span>
-          <span class="hero-dot">·</span>
-          <a href="mailto:simon@bechard.dev" class="hero-url"
-            >simon@bechard.dev</a
+          <a
+            href="mailto:simon@bechard.dev"
+            class="inline-flex items-center px-2 font-medium text-[#e07a38] hover:underline"
           >
+            simon@bechard.dev
+          </a>
         </div>
       </section>
 
-      <!-- BIO -->
-      <section class="bio-section">
-        <Image src={meSquareImg} alt="Simon Bechard" class="bio-avatar" />
-        <div class="bio-content">
-          <p class="bio-text">
-            I'm Simon — a fullstack developer and tech enthusiast who builds
-            things that make my life easier. I've automated my home, my trading
-            and my brothers hire business.
-          </p>
-        </div>
+      <section
+        class="mx-auto flex max-w-3xl flex-col items-start gap-6 px-6 py-2 sm:py-6 sm:flex-row sm:px-8 [animation:up_0.7s_cubic-bezier(0.23,1,0.32,1)_0.1s_both]"
+      >
+        <Image
+          src={meSquareImg}
+          alt="Simon Bechard"
+          class="h-32 w-32 shrink-0 rounded-[20%] border-2 border-[#eee] object-cover"
+        />
+        <p class="max-w-[640px] text-[0.95rem] leading-[1.7] text-[#333]">
+          I'm <b>Simon</b> - a fullstack developer and tech enthusiast who builds
+          things that make my life easier. I've automated my home, my trading and
+          my brothers hire business.
+        </p>
       </section>
 
-      <!-- PROJECTS — Sequential column -->
-      <section class="projects">
+      <section
+        class="mx-auto mt-4 flex max-w-3xl flex-col gap-6 px-6 pb-8 sm:px-8"
+      >
         <a
           href="https://mrtrestle.com.au"
           target="_blank"
           rel="noopener"
-          class="project-card"
+          class="group block [animation:up_0.6s_cubic-bezier(0.23,1,0.32,1)_0.15s_both]"
         >
-          <div class="card-browser">
-            <div class="browser-bar">
-              <div class="browser-dots">
-                <span></span><span></span><span></span>
+          <Card
+            className="overflow-hidden rounded-2xl border-[#eee] bg-white py-0 text-inherit shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] transition-all duration-300 group-hover:-translate-y-[3px] group-hover:shadow-[0_2px_8px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.06)]"
+          >
+            <div class="border-b border-[#eee]">
+              <div
+                class="flex items-center gap-3 border-b border-[#eee] bg-[#f8f8f8] px-[0.85rem] py-[0.6rem]"
+              >
+                <div class="flex gap-[5px]">
+                  <span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"
+                  ></span><span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"
+                  ></span><span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"
+                  ></span>
+                </div>
+                <div
+                  class="flex-1 rounded bg-[#f0f0f0] px-[0.6rem] py-[0.2rem] text-center text-[0.72rem] text-[#aaa]"
+                >
+                  mrtrestle.com.au
+                </div>
               </div>
-              <div class="browser-url">mrtrestle.com.au</div>
+              <div class="overflow-hidden bg-[#f0f0f0]">
+                <img
+                  src="https://mrtrestle.com.au/og-image.jpg"
+                  alt="MrTrestle - Brisbane trestle hire and scaffold equipment rental"
+                  class="block w-full transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                  loading="lazy"
+                  onerror={`this.onerror=null;this.src='${mrtrestleImg.src}'`}
+                />
+              </div>
             </div>
-            <div class="browser-viewport">
-              <img
-                src="https://mrtrestle.com.au/og-image.jpg"
-                alt="MrTrestle — Brisbane trestle hire and scaffold equipment rental"
-                class="browser-img"
-                loading="lazy"
-                onerror={`this.onerror=null;this.src='${mrtrestleImg.src}'`}
-              />
-            </div>
-          </div>
-          <div class="card-info">
-            <div class="card-top">
-              <span class="card-label">Web Platform</span>
-              <span class="card-year">2025</span>
-            </div>
-            <h2 class="card-name">MrTrestle</h2>
-            <p class="card-desc">
-              My brothers equipment hire company. Features an instant quote and
-              online booking system. Admin dashboard for managing bookings and
-              inventory.
-            </p>
-            <span class="card-cta">Visit site ↗</span>
-          </div>
+            <CardContent className="p-5">
+              <div class="mb-2 flex items-center justify-between">
+                <Badge
+                  className="h-auto rounded-full bg-[#fef3eb] px-[0.6rem] py-[0.2rem] text-[0.7rem] font-semibold uppercase tracking-[0.06em] text-[#e07a38]"
+                  >Web Platform</Badge
+                >
+                <span class="text-[0.75rem] text-[#aaa]">2025</span>
+              </div>
+              <h2
+                class="mb-1 text-[1.3rem] font-semibold tracking-[-0.02em] text-[#111] [font-family:'Fraunces',serif]"
+              >
+                MrTrestle
+              </h2>
+              <p class="mb-3 text-[0.85rem] leading-[1.55] text-[#777]">
+                My brothers equipment hire company. Features an instant quote
+                and online booking system. Admin dashboard for managing bookings
+                and inventory.
+              </p>
+              <span
+                class="inline-block text-[0.8rem] font-semibold text-[#e07a38]"
+                >Visit site ↗</span
+              >
+            </CardContent>
+          </Card>
         </a>
 
         <a
           href="https://coinstacker.com.au"
           target="_blank"
           rel="noopener"
-          class="project-card"
+          class="group block [animation:up_0.6s_cubic-bezier(0.23,1,0.32,1)_0.25s_both]"
         >
-          <div class="card-browser">
-            <div class="browser-bar">
-              <div class="browser-dots">
-                <span></span><span></span><span></span>
+          <Card
+            className="overflow-hidden rounded-2xl border-[#eee] bg-white py-0 text-inherit shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] transition-all duration-300 group-hover:-translate-y-[3px] group-hover:shadow-[0_2px_8px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.06)]"
+          >
+            <div class="border-b border-[#eee]">
+              <div
+                class="flex items-center gap-3 border-b border-[#eee] bg-[#f8f8f8] px-[0.85rem] py-[0.6rem]"
+              >
+                <div class="flex gap-[5px]">
+                  <span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"
+                  ></span><span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"
+                  ></span><span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"
+                  ></span>
+                </div>
+                <div
+                  class="flex-1 rounded bg-[#f0f0f0] px-[0.6rem] py-[0.2rem] text-center text-[0.72rem] text-[#aaa]"
+                >
+                  coinstacker.com.au
+                </div>
               </div>
-              <div class="browser-url">coinstacker.com.au</div>
+              <div class="overflow-hidden bg-[#f0f0f0]">
+                <Image
+                  src={coinStackerImg}
+                  alt="CoinStacker - Australian crypto price aggregator"
+                  class="block w-full transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                  loading="lazy"
+                />
+              </div>
             </div>
-            <div class="browser-viewport">
-              <Image
-                src={coinStackerImg}
-                alt="CoinStacker — Australian crypto price aggregator"
-                class="browser-img"
-                loading="lazy"
-              />
-            </div>
-          </div>
-          <div class="card-info">
-            <div class="card-top">
-              <span class="card-label">FinTech</span>
-              <span class="card-year">2025</span>
-            </div>
-            <h2 class="card-name">CoinStacker</h2>
-            <p class="card-desc">
-              Australian crypto price aggregator. Compare live exchange prices,
-              find the best deal, stack more coins.
-            </p>
-            <span class="card-cta">Visit site ↗</span>
-          </div>
+            <CardContent className="p-5">
+              <div class="mb-2 flex items-center justify-between">
+                <Badge
+                  className="h-auto rounded-full bg-[#fef3eb] px-[0.6rem] py-[0.2rem] text-[0.7rem] font-semibold uppercase tracking-[0.06em] text-[#e07a38]"
+                  >FinTech</Badge
+                >
+                <span class="text-[0.75rem] text-[#aaa]">2025</span>
+              </div>
+              <h2
+                class="mb-1 text-[1.3rem] font-semibold tracking-[-0.02em] text-[#111] [font-family:'Fraunces',serif]"
+              >
+                CoinStacker
+              </h2>
+              <p class="mb-3 text-[0.85rem] leading-[1.55] text-[#777]">
+                Australian crypto price aggregator. Compare live exchange
+                prices, find the best deal, stack more coins.
+              </p>
+              <span
+                class="inline-block text-[0.8rem] font-semibold text-[#e07a38]"
+                >Visit site ↗</span
+              >
+            </CardContent>
+          </Card>
         </a>
 
-        <div class="project-card card-arby-wrap">
-          <div class="card-browser">
-            <div class="browser-bar">
-              <div class="browser-dots">
-                <span></span><span></span><span></span>
+        <Card
+          className="overflow-hidden rounded-2xl border-[#eee] bg-white py-0 text-inherit shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] transition-shadow duration-300 hover:shadow-[0_2px_8px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.06)] [animation:up_0.6s_cubic-bezier(0.23,1,0.32,1)_0.35s_both]"
+        >
+          <div class="border-b border-[#eee]">
+            <div
+              class="flex items-center gap-3 border-b border-[#eee] bg-[#f8f8f8] px-[0.85rem] py-[0.6rem]"
+            >
+              <div class="flex gap-[5px]">
+                <span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"
+                ></span><span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"
+                ></span><span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"
+                ></span>
               </div>
             </div>
-            <div class="browser-viewport">
+            <div class="overflow-hidden bg-[#f0f0f0]">
               <Image
                 src={arbyDashImg}
-                alt="CoinStacker — Australian crypto price aggregator"
-                class="browser-img"
+                alt="Arby dashboard screenshot"
+                class="block w-full"
                 loading="lazy"
               />
             </div>
           </div>
-          <div class="card-info">
-            <div class="card-top">
-              <span class="card-label">Private Bot & Dashboard</span>
-              <span class="card-badge">Private</span>
+          <CardContent className="p-5">
+            <div class="mb-2 flex items-center justify-between gap-2">
+              <Badge
+                className="h-auto rounded-full bg-[#fef3eb] px-[0.6rem] py-[0.2rem] text-[0.7rem] font-semibold uppercase tracking-[0.06em] text-[#e07a38]"
+                >Private Bot & Dashboard</Badge
+              >
+              <Badge
+                variant="outline"
+                className="h-auto rounded-full border-[#eee] px-2 py-[0.15rem] text-[0.65rem] font-medium text-[#aaa]"
+                >Private</Badge
+              >
             </div>
-            <h2 class="card-name">Arby</h2>
-            <p class="card-desc">
+            <h2
+              class="mb-1 text-[1.3rem] font-semibold tracking-[-0.02em] text-[#111] [font-family:'Fraunces',serif]"
+            >
+              Arby
+            </h2>
+            <p class="mb-3 text-[0.85rem] leading-[1.55] text-[#777]">
               Personal arbitrage bot & trading analytics dashboard. (not public)
             </p>
-            <span class="card-cta muted">Screenshots coming soon</span>
-          </div>
-        </div>
+            <span class="inline-block text-[0.8rem] font-normal text-[#aaa]"
+              >Screenshots coming soon</span
+            >
+          </CardContent>
+        </Card>
       </section>
 
-      <!-- INTERESTS BENTO -->
-      <section class="bento">
-        <!-- Tech Interests — Wide card -->
-        <div class="card card-tech">
-          <h3 class="section-heading">What I'm into</h3>
-          <div class="interest-grid">
-            <div class="interest-chip">
-              <span class="chip-icon">🏠</span>
-              <div>
-                <span class="chip-name">Home Automation</span>
-                <span class="chip-sub">Home Assistant, always tinkering</span>
+      <section
+        class="mx-auto grid max-w-3xl grid-cols-1 gap-4 px-6 pb-8 sm:grid-cols-2 sm:px-8 lg:grid-cols-3"
+      >
+        <Card
+          className="rounded-2xl border-[#eee] bg-white py-6 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] transition-shadow duration-300 hover:shadow-[0_2px_8px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.06)] sm:col-span-2 lg:col-span-3 [animation:up_0.6s_cubic-bezier(0.23,1,0.32,1)_0.4s_both]"
+        >
+          <CardHeader className="px-6 pb-4">
+            <h3
+              class="text-[1.1rem] font-medium tracking-[-0.01em] text-[#111] [font-family:'Fraunces',serif]"
+            >
+              What I'm into
+            </h3>
+          </CardHeader>
+          <CardContent
+            className="grid grid-cols-1 gap-3 px-6 pb-0 sm:grid-cols-2"
+          >
+            <div
+              class="flex items-center gap-3 rounded-[10px] border border-[#eee] p-3 transition-colors hover:border-[#ddd] hover:bg-[#fafafa]"
+            >
+              <span
+                class="flex h-10 w-10 items-center justify-center rounded-[10px] bg-[#fafafa]"
+                ><Logos.HomeAssistant className="h-[1.45rem] w-[1.45rem]" />
+              </span><div>
+                <span class="block text-[0.85rem] font-semibold text-[#111]"
+                  >Home Automation</span
+                ><span class="mt-[0.1rem] block text-[0.75rem] text-[#aaa]"
+                  >Home Assistant, always tinkering</span
+                >
               </div>
             </div>
-            <div class="interest-chip">
-              <span class="chip-icon">🤖</span>
-              <div>
-                <span class="chip-name">LLM & Agentic Coding</span>
-                <span class="chip-sub">Cursor, Claude, autonomous agents</span>
+            <div
+              class="flex items-center gap-3 rounded-[10px] border border-[#eee] p-3 transition-colors hover:border-[#ddd] hover:bg-[#fafafa]"
+            >
+              <span
+                class="logo-morph flex h-10 w-10 items-center justify-center rounded-[10px] bg-[#fafafa]"
+                aria-hidden="true"
+              >
+                <span class="logo-morph__item"><Logos.OpenAI /></span>
+                <span class="logo-morph__item"><Logos.Cursor /></span>
+                <span class="logo-morph__item"><Logos.OpenCode /></span>
+                <span class="logo-morph__item"><Logos.Gemini /></span>
+                <span class="logo-morph__item"><Logos.Anthropic /></span>
+              </span><div>
+                <span class="block text-[0.85rem] font-semibold text-[#111]"
+                  >LLM & Agentic Coding</span
+                ><span class="mt-[0.1rem] block text-[0.75rem] text-[#aaa]"
+                  >Experimenting with the latest LLM and agentic coding tools</span
+                >
               </div>
             </div>
-            <div class="interest-chip">
-              <span class="chip-icon">₿</span>
-              <div>
-                <span class="chip-name">Crypto</span>
-                <span class="chip-sub">Trader & investor</span>
+            <div
+              class="flex items-center gap-3 rounded-[10px] border border-[#eee] p-3 transition-colors hover:border-[#ddd] hover:bg-[#fafafa]"
+            >
+              <span
+                class="flex h-10 w-10 items-center justify-center rounded-[10px] bg-[#fafafa] text-2xl"
+                >₿</span
+              ><div>
+                <span class="block text-[0.85rem] font-semibold text-[#111]"
+                  >Crypto</span
+                ><span class="mt-[0.1rem] block text-[0.75rem] text-[#aaa]"
+                  >Trader & investor</span
+                >
               </div>
             </div>
-            <div class="interest-chip">
-              <span class="chip-icon">🖨️</span>
-              <div>
-                <span class="chip-name">3D Printing</span>
-                <span class="chip-sub"
+            <div
+              class="flex items-center gap-3 rounded-[10px] border border-[#eee] p-3 transition-colors hover:border-[#ddd] hover:bg-[#fafafa]"
+            >
+              <span
+                class="flex h-10 w-10 items-center justify-center rounded-[10px] bg-[#fafafa] text-2xl"
+                >🖨️</span
+              ><div>
+                <span class="block text-[0.85rem] font-semibold text-[#111]"
+                  >3D Printing</span
+                ><span class="mt-[0.1rem] block text-[0.75rem] text-[#aaa]"
                   >Functional parts and toys for my toddler</span
                 >
               </div>
             </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
 
-        <!-- Life — Three small cards -->
-        <div class="card card-life card-padel">
-          <Image src={padelImg} alt="Padel" class="life-icon-img" />
-          <h3 class="life-name">Padel</h3>
-          <p class="life-desc">Weekly warrior</p>
-        </div>
+        <Card
+          className="min-h-[180px] rounded-2xl border-[#eee] bg-[linear-gradient(160deg,#fff_60%,#f0f7f0)] py-6 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] transition-shadow duration-300 hover:shadow-[0_2px_8px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.06)] [animation:up_0.6s_cubic-bezier(0.23,1,0.32,1)_0.45s_both]"
+        >
+          <CardContent
+            className="flex h-full flex-col items-center justify-center px-6 text-center"
+          >
+            <Image
+              src={padelImg}
+              alt="Padel"
+              class="mb-3 h-12 w-12 rotate-45 object-contain"
+            />
+            <h3
+              class="mb-1 text-base font-semibold text-[#111] [font-family:'Fraunces',serif]"
+            >
+              Padel
+            </h3>
+            <p class="max-w-[200px] text-[0.78rem] leading-[1.5] text-[#777]">
+              Weekly warrior
+            </p>
+          </CardContent>
+        </Card>
 
-        <div class="card card-life card-gaming">
-          <span class="life-icon">🎮</span>
-          <h3 class="life-name">Gaming</h3>
-          <p class="life-desc">PC</p>
-        </div>
+        <Card
+          className="min-h-[180px] rounded-2xl border-[#eee] bg-white py-6 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] transition-shadow duration-300 hover:shadow-[0_2px_8px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.06)] [animation:up_0.6s_cubic-bezier(0.23,1,0.32,1)_0.5s_both]"
+        >
+          <CardContent
+            className="flex h-full flex-col items-center justify-center px-6 text-center"
+          >
+            <span class="mb-3 text-[2.5rem]">🎮</span>
+            <h3
+              class="mb-1 text-base font-semibold text-[#111] [font-family:'Fraunces',serif]"
+            >
+              Gaming
+            </h3>
+            <p class="max-w-[200px] text-[0.78rem] leading-[1.5] text-[#777]">
+              PC
+            </p>
+          </CardContent>
+        </Card>
 
-        <div class="card card-life card-poker">
-          <span class="life-icon">♦️</span>
-          <h3 class="life-name">Poker</h3>
-          <p class="life-desc">Texas Hold'em</p>
-        </div>
+        <Card
+          className="min-h-[180px] rounded-2xl border-[#eee] bg-[linear-gradient(160deg,#fff_60%,#f0f0f8)] py-6 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] transition-shadow duration-300 hover:shadow-[0_2px_8px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.06)] [animation:up_0.6s_cubic-bezier(0.23,1,0.32,1)_0.55s_both]"
+        >
+          <CardContent
+            className="flex h-full flex-col items-center justify-center px-6 text-center"
+          >
+            <span class="mb-3 text-[2.5rem]">♦️</span>
+            <h3
+              class="mb-1 text-base font-semibold text-[#111] [font-family:'Fraunces',serif]"
+            >
+              Poker
+            </h3>
+            <p class="max-w-[200px] text-[0.78rem] leading-[1.5] text-[#777]">
+              Texas Hold'em
+            </p>
+          </CardContent>
+        </Card>
       </section>
 
-      <footer class="footer">
-        <div class="footer-inner">
-          <span class="footer-copy">© 2026 Simon Bechard</span>
-          <div class="footer-links">
-            <a href="https://github.com/simbesh" target="_blank" rel="noopener"
+      <footer class="mx-auto max-w-3xl px-6 pb-8 pt-4 sm:px-8 sm:pb-10">
+        <Separator className="bg-[#eee]" />
+        <div
+          class="mt-6 flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left"
+        >
+          <span class="text-[0.8rem] text-[#aaa]">© 2026 Simon Bechard</span>
+          <div class="flex gap-6">
+            <a
+              href="https://github.com/simbesh"
+              target="_blank"
+              rel="noopener"
+              class="text-[0.8rem] text-[#777] transition-colors hover:text-[#111]"
               >GitHub</a
             >
             <a
               href="https://www.linkedin.com/in/simon-bechard-237470196/"
               target="_blank"
-              rel="noopener">LinkedIn</a
+              rel="noopener"
+              class="text-[0.8rem] text-[#777] transition-colors hover:text-[#111]"
+              >LinkedIn</a
             >
           </div>
         </div>
       </footer>
     </main>
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      :root {
-        --bg: #fafafa;
-        --white: #ffffff;
-        --black: #111111;
-        --text: #333333;
-        --text-secondary: #777777;
-        --text-light: #aaaaaa;
-        --border: #eeeeee;
-        --accent: #e07a38;
-        --accent-light: #fef3eb;
-        --accent-dark: #c4622a;
-        --card-shadow:
-          0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
-        --card-shadow-hover:
-          0 2px 8px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.06);
-        --radius: 16px;
-        --radius-sm: 10px;
-      }
-
-      body {
-        background: var(--bg);
-        color: var(--text);
-        font-family:
-          "Plus Jakarta Sans",
-          -apple-system,
-          sans-serif;
-        min-height: 100vh;
-        overflow-x: hidden;
-        font-weight: 400;
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
-      }
-
-      /* NAV */
-      .nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 1080px;
-        margin: 0 auto;
-        padding: 1.5rem 2rem;
-      }
-
-      .nav-name {
-        font-weight: 600;
-        font-size: 0.95rem;
-        color: var(--black);
-      }
-
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-      }
-
-      .nav-links a {
-        font-size: 0.85rem;
-        color: var(--text-secondary);
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-
-      .nav-links a:hover {
-        color: var(--black);
-      }
-
-      .nav-cta {
-        background: var(--black) !important;
-        color: var(--white) !important;
-        padding: 0.5rem 1.2rem !important;
-        border-radius: 100px;
-        font-weight: 500 !important;
-        font-size: 0.82rem !important;
-        transition: opacity 0.2s !important;
-      }
-
-      .nav-cta:hover {
-        opacity: 0.85 !important;
-        color: var(--white) !important;
-      }
-
-      /* HERO */
-      .hero {
-        max-width: 1080px;
-        margin: 0 auto;
-        padding: 4rem 2rem 2rem;
-      }
-
-      .hero-headline {
-        font-family: "Fraunces", serif;
-        font-size: clamp(2.5rem, 5.5vw, 4rem);
-        font-weight: 500;
-        line-height: 1.15;
-        letter-spacing: -0.03em;
-        color: var(--black);
-        font-optical-sizing: auto;
-      }
-
-      .hero-accent {
-        font-style: italic;
-        color: var(--accent);
-      }
-
-      .hero-meta {
-        display: flex;
-        align-items: center;
-        justify-content: start;
-        gap: 0.75rem;
-        margin-top: 1.25rem;
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-      }
-
-      .hero-icon {
-        height: 2em;
-        width: auto;
-        vertical-align: middle;
-        margin-left: 0.15rem;
-        display: inline-block;
-      }
-
-      .hero-dot {
-        color: var(--text-light);
-      }
-
-      .hero-url {
-        color: var(--accent);
-        text-decoration: none;
-        font-weight: 500;
-      }
-
-      .hero-url:hover {
-        text-decoration: underline;
-      }
-
-      /* BIO */
-      .bio-section {
-        max-width: 1080px;
-        margin: 0 auto;
-        padding: 2rem;
-        display: flex;
-        gap: 1.5rem;
-        align-items: flex-start;
-      }
-
-      .bio-avatar {
-        width: 128px;
-        height: 128px;
-        border-radius: 20%;
-        object-fit: cover;
-        flex-shrink: 0;
-        border: 2px solid var(--border);
-      }
-
-      .bio-text {
-        font-size: 0.95rem;
-        color: var(--text);
-        line-height: 1.7;
-        max-width: 640px;
-      }
-
-      .bio-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 1rem;
-      }
-
-      .tag {
-        display: inline-block;
-        font-size: 0.75rem;
-        font-weight: 500;
-        padding: 0.3rem 0.75rem;
-        border-radius: 100px;
-        border: 1px solid var(--border);
-        color: var(--text-secondary);
-        background: var(--white);
-      }
-
-      /* PROJECTS COLUMN */
-      .projects {
-        max-width: 1080px;
-        margin: 1rem auto 0;
-        padding: 0 2rem 2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .project-card {
-        background: var(--white);
-        border-radius: var(--radius);
-        border: 1px solid var(--border);
-        overflow: hidden;
-        text-decoration: none;
-        color: inherit;
-        transition:
-          transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
-          box-shadow 0.3s ease;
-        box-shadow: var(--card-shadow);
-      }
-
-      .project-card:hover {
-        box-shadow: var(--card-shadow-hover);
-      }
-
-      a.project-card:hover {
-        transform: translateY(-3px);
-      }
-
-      /* BENTO GRID (interests + life) */
-      .bento {
-        max-width: 1080px;
-        margin: 0 auto;
-        padding: 0 2rem 2rem;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        grid-auto-rows: auto;
-      }
-
-      .card {
-        background: var(--white);
-        border-radius: var(--radius);
-        border: 1px solid var(--border);
-        overflow: hidden;
-        text-decoration: none;
-        color: inherit;
-        transition:
-          transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
-          box-shadow 0.3s ease;
-        box-shadow: var(--card-shadow);
-      }
-
-      .card:hover {
-        box-shadow: var(--card-shadow-hover);
-      }
-
-      a.card:hover {
-        transform: translateY(-3px);
-      }
-
-      .card-tech {
-        grid-column: span 3;
-      }
-
-      .card-browser {
-        border-bottom: 1px solid var(--border);
-      }
-
-      .browser-bar {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 0.6rem 0.85rem;
-        background: #f8f8f8;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .browser-dots {
-        display: flex;
-        gap: 5px;
-      }
-
-      .browser-dots span {
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        background: #ddd;
-      }
-
-      .browser-url {
-        font-size: 0.72rem;
-        color: var(--text-light);
-        background: #f0f0f0;
-        padding: 0.2rem 0.6rem;
-        border-radius: 4px;
-        flex: 1;
-        text-align: center;
-      }
-
-      .browser-viewport {
-        overflow: hidden;
-        background: #f0f0f0;
-      }
-
-      .browser-img {
-        width: 100%;
-        height: auto;
-        display: block;
-        transition: transform 0.5s ease;
-      }
-
-      a.project-card:hover .browser-img {
-        transform: scale(1.02);
-      }
-
-      .card-info {
-        padding: 1.25rem;
-      }
-
-      .card-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 0.5rem;
-      }
-
-      .card-label {
-        font-size: 0.7rem;
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: var(--accent);
-        background: var(--accent-light);
-        padding: 0.2rem 0.6rem;
-        border-radius: 100px;
-      }
-
-      .card-year {
-        font-size: 0.75rem;
-        color: var(--text-light);
-      }
-
-      .card-badge {
-        font-size: 0.65rem;
-        font-weight: 500;
-        padding: 0.15rem 0.5rem;
-        border-radius: 100px;
-        border: 1px solid var(--border);
-        color: var(--text-light);
-      }
-
-      .card-name {
-        font-family: "Fraunces", serif;
-        font-size: 1.3rem;
-        font-weight: 600;
-        color: var(--black);
-        margin-bottom: 0.35rem;
-        letter-spacing: -0.02em;
-      }
-
-      .card-desc {
-        font-size: 0.85rem;
-        color: var(--text-secondary);
-        line-height: 1.55;
-        margin-bottom: 0.75rem;
-      }
-
-      .card-cta {
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: var(--accent);
-        display: inline-block;
-      }
-
-      .card-cta.muted {
-        color: var(--text-light);
-        font-weight: 400;
-      }
-
-      /* ARBY PLACEHOLDER */
-      .card-arby-placeholder {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 140px;
-        background: linear-gradient(135deg, #f8f6f4, #f0ece6);
-        border-bottom: 1px solid var(--border);
-      }
-
-      .lock-icon {
-        width: 36px;
-        height: 36px;
-        color: #ccc;
-      }
-
-      /* TECH INTERESTS CARD */
-      .card-tech {
-        padding: 1.5rem;
-      }
-
-      .section-heading {
-        font-family: "Fraunces", serif;
-        font-size: 1.1rem;
-        font-weight: 500;
-        color: var(--black);
-        margin-bottom: 1rem;
-        letter-spacing: -0.01em;
-      }
-
-      .interest-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.75rem;
-      }
-
-      .interest-chip {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 0.75rem;
-        border-radius: var(--radius-sm);
-        border: 1px solid var(--border);
-        transition:
-          border-color 0.2s,
-          background 0.2s;
-      }
-
-      .interest-chip:hover {
-        border-color: #ddd;
-        background: #fafafa;
-      }
-
-      .chip-icon {
-        font-size: 1.5rem;
-        flex-shrink: 0;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--bg);
-        border-radius: 10px;
-      }
-
-      .chip-name {
-        display: block;
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: var(--black);
-      }
-
-      .chip-sub {
-        display: block;
-        font-size: 0.75rem;
-        color: var(--text-light);
-        margin-top: 0.1rem;
-      }
-
-      /* LIFE CARDS */
-      .card-life {
-        padding: 1.5rem;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 180px;
-      }
-
-      .life-icon {
-        font-size: 2.5rem;
-        margin-bottom: 0.75rem;
-      }
-
-      .life-icon-img {
-        width: 48px;
-        height: 48px;
-        object-fit: contain;
-        margin-bottom: 0.75rem;
-        transform: rotate(45deg);
-      }
-
-      .life-name {
-        font-family: "Fraunces", serif;
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--black);
-        margin-bottom: 0.35rem;
-      }
-
-      .life-desc {
-        font-size: 0.78rem;
-        color: var(--text-secondary);
-        line-height: 1.5;
-        max-width: 200px;
-      }
-
-      .card-padel {
-        background: linear-gradient(160deg, #fff 60%, #f0f7f0);
-      }
-      .card-beer {
-        background: linear-gradient(160deg, #fff 60%, #fef8f0);
-      }
-      .card-poker {
-        background: linear-gradient(160deg, #fff 60%, #f0f0f8);
-      }
-
-      /* FOOTER */
-      .footer {
-        max-width: 1080px;
-        margin: 0 auto;
-        padding: 2rem;
-      }
-
-      .footer-inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 1.5rem;
-        border-top: 1px solid var(--border);
-      }
-
-      .footer-copy {
-        font-size: 0.8rem;
-        color: var(--text-light);
-      }
-
-      .footer-links {
-        display: flex;
-        gap: 1.5rem;
-      }
-
-      .footer-links a {
-        font-size: 0.8rem;
-        color: var(--text-secondary);
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-
-      .footer-links a:hover {
-        color: var(--black);
-      }
-
-      /* DESIGNS LINK */
-      .designs-link {
-        position: fixed;
-        top: 1.5rem;
-        right: 2rem;
-        z-index: 100;
-        font-size: 0.8rem;
-        color: var(--text-light);
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-
-      .designs-link:hover {
-        color: var(--black);
-      }
-
-      /* ANIMATIONS */
-      .hero {
-        animation: up 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
-      }
-      .bio-section {
-        animation: up 0.7s cubic-bezier(0.23, 1, 0.32, 1) 0.1s both;
-      }
-
-      .project-card,
-      .card {
-        animation: up 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
-      }
-
-      .project-card:nth-child(1) {
-        animation-delay: 0.15s;
-      }
-      .project-card:nth-child(2) {
-        animation-delay: 0.25s;
-      }
-      .project-card:nth-child(3) {
-        animation-delay: 0.35s;
-      }
-      .card-tech {
-        animation-delay: 0.4s;
-      }
-      .card-padel {
-        animation-delay: 0.45s;
-      }
-      .card-beer {
-        animation-delay: 0.5s;
-      }
-      .card-poker {
-        animation-delay: 0.55s;
-      }
-
+    <style is:global>
       @keyframes up {
         from {
           opacity: 0;
@@ -851,51 +464,60 @@ import padelImg from "@/assets/padel-racquet.png";
         }
       }
 
-      /* RESPONSIVE */
-      @media (max-width: 860px) {
-        .bento {
-          grid-template-columns: 1fr 1fr;
+      @keyframes logoMorph {
+        0%,
+        18% {
+          opacity: 1;
+          filter: blur(0) brightness(1);
+          transform: scale(1);
         }
-        .card-tech {
-          grid-column: span 2;
+
+        22%,
+        100% {
+          opacity: 0;
+          filter: blur(7px) brightness(1.15);
+          transform: scale(0.9);
         }
       }
 
-      @media (max-width: 640px) {
-        .nav {
-          padding: 1rem;
-        }
-        .nav-links a:not(.nav-cta) {
-          display: none;
-        }
-        .hero {
-          padding: 2.5rem 1.5rem 1.5rem;
-        }
-        .bio-section {
-          padding: 1.5rem;
-          flex-direction: column;
-        }
-        .projects {
-          padding: 0 1.5rem 1.5rem;
-        }
-        .bento {
-          grid-template-columns: 1fr;
-          padding: 0 1.5rem 1.5rem;
-        }
-        .card-tech {
-          grid-column: span 1;
-        }
-        .interest-grid {
-          grid-template-columns: 1fr;
-        }
-        .hero-meta {
-          flex-wrap: wrap;
-        }
-        .footer-inner {
-          flex-direction: column;
-          gap: 0.75rem;
-          text-align: center;
-        }
+      .logo-morph {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .logo-morph__item {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        opacity: 0;
+        animation: logoMorph 10s ease-in-out infinite;
+        will-change: transform, filter, opacity;
+      }
+
+      .logo-morph__item :is(svg, img) {
+        width: 1.45rem;
+        height: 1.45rem;
+      }
+
+      .logo-morph__item:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .logo-morph__item:nth-child(2) {
+        animation-delay: 2s;
+      }
+
+      .logo-morph__item:nth-child(3) {
+        animation-delay: 4s;
+      }
+
+      .logo-morph__item:nth-child(4) {
+        animation-delay: 6s;
+      }
+
+      .logo-morph__item:nth-child(5) {
+        animation-delay: 8s;
       }
     </style>
     <Analytics />
