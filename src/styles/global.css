@@ -188,3 +188,71 @@
     @apply relative touch-manipulation after:absolute after:-inset-2;
   }
 }
+
+@keyframes up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoMorph {
+  0%,
+  18% {
+    opacity: 1;
+    filter: blur(0) brightness(1);
+    transform: scale(1);
+  }
+
+  22%,
+  100% {
+    opacity: 0;
+    filter: blur(7px) brightness(1.15);
+    transform: scale(0.9);
+  }
+}
+
+.logo-morph {
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-morph__item {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  animation: logoMorph 7.5s ease-in-out infinite;
+  will-change: transform, filter, opacity;
+}
+
+.logo-morph__item :is(svg, img) {
+  width: 1.45rem;
+  height: 1.45rem;
+}
+
+.logo-morph__item:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.logo-morph__item:nth-child(2) {
+  animation-delay: 1.5s;
+}
+
+.logo-morph__item:nth-child(3) {
+  animation-delay: 3s;
+}
+
+.logo-morph__item:nth-child(4) {
+  animation-delay: 4.5s;
+}
+
+.logo-morph__item:nth-child(5) {
+  animation-delay: 6s;
+}

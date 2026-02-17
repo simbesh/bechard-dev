@@ -1,0 +1,38 @@
+---
+import { Card } from "@/components/ui/card";
+
+interface Props {
+  href?: string;
+  class?: string;
+  target?: string;
+  rel?: string;
+}
+
+const {
+  href,
+  class: className = "",
+  target = "_blank",
+  rel = "noopener",
+} = Astro.props;
+
+const baseCardClass =
+  "overflow-hidden rounded-2xl border-[#eee] bg-white gap-0 py-0 text-inherit shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)]";
+const linkedCardClass =
+  "transition-all duration-300 group-hover:-translate-y-[3px] group-hover:shadow-[0_2px_8px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.06)]";
+const staticCardClass =
+  "transition-shadow duration-300 hover:shadow-[0_2px_8px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.06)]";
+---
+
+{
+  href ? (
+    <a href={href} target={target} rel={rel} class={`group block ${className}`.trim()}>
+      <Card className={`${baseCardClass} ${linkedCardClass}`}>
+        <slot />
+      </Card>
+    </a>
+  ) : (
+    <Card className={`${baseCardClass} ${staticCardClass} ${className}`.trim()}>
+      <slot />
+    </Card>
+  )
+}

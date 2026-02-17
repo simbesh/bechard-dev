@@ -2,6 +2,8 @@
 import Analytics from "@vercel/analytics/astro";
 import { Image } from "astro:assets";
 import HeadSEO from "@/components/HeadSEO.astro";
+import ExternalLinkLabel from "@/components/ExternalLinkLabel.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -13,6 +15,17 @@ import coinStackerImg from "@/assets/coin-stacker.png";
 import arbyDashImg from "@/assets/arby-dash.png";
 import padelImg from "@/assets/padel-racquet.png";
 import { Logos } from "@/components/icons/Logo";
+import TechStackIcons, {
+  BUN,
+  NEXT_JS,
+  PLAYWRIGHT,
+  POSTHOG,
+  REDIS,
+  TAILWIND,
+  TURSO,
+  VERCEL,
+  VULTR,
+} from "@/components/TechStackIcons";
 ---
 
 <html lang="en">
@@ -80,11 +93,15 @@ import { Logos } from "@/components/icons/Logo";
               rel="noopener"
               class="inline-flex items-center"
             >
-              <Image
-                src={pricefxImg}
-                alt="PriceFX"
-                class="inline h-[1.8em] w-auto"
-              />
+              <span
+                class="inline-flex px-2 py-0.5 rounded-lg bg-white shadow-sm"
+              >
+                <Image
+                  src={pricefxImg}
+                  alt="PriceFX"
+                  class="inline shrink-0 h-[1.8em] w-auto"
+                />
+              </span>
             </a>
           </span>
           <span class="inline-flex items-center px-2">Brisbane – Australia</span
@@ -116,127 +133,121 @@ import { Logos } from "@/components/icons/Logo";
       <section
         class="mx-auto mt-4 flex max-w-3xl flex-col gap-6 px-6 pb-8 sm:px-8"
       >
-        <a
+        <ProjectCard
           href="https://mrtrestle.com.au"
-          target="_blank"
-          rel="noopener"
-          class="group block animate-[up_0.6s_cubic-bezier(0.23,1,0.32,1)_0.15s_both]"
+          class="animate-[up_0.6s_cubic-bezier(0.23,1,0.32,1)_0.15s_both]"
         >
-          <Card
-            className="overflow-hidden rounded-2xl border-[#eee] bg-white gap-0 py-0 text-inherit shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] transition-all duration-300 group-hover:-translate-y-[3px] group-hover:shadow-[0_2px_8px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.06)]"
-          >
-            <div class="border-b border-[#eee]">
-              <div
-                class="flex items-center gap-3 border-b border-[#eee] bg-[#f8f8f8] px-[0.85rem] py-[0.6rem]"
-              >
-                <div class="flex gap-[5px]">
-                  <span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"
-                  ></span><span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"
-                  ></span><span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"
-                  ></span>
-                </div>
-                <div
-                  class="flex-1 rounded bg-[#f0f0f0] px-[0.6rem] py-[0.2rem] text-center text-[0.72rem] text-[#aaa]"
-                >
-                  mrtrestle.com.au
-                </div>
+          <div class="border-b border-[#eee]">
+            <div
+              class="flex items-center gap-3 border-b border-[#eee] bg-[#f8f8f8] px-[0.85rem] py-[0.6rem]"
+            >
+              <div class="flex gap-[5px]">
+                <span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"
+                ></span><span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"
+                ></span><span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"
+                ></span>
               </div>
-              <div class="overflow-hidden bg-[#f0f0f0]">
-                <img
-                  src="https://mrtrestle.com.au/og-image.jpg"
-                  alt="MrTrestle - Brisbane trestle hire and scaffold equipment rental"
-                  class="block w-full transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-                  loading="lazy"
-                  onerror={`this.onerror=null;this.src='${mrtrestleImg.src}'`}
-                />
+              <div
+                class="flex-1 rounded bg-[#f0f0f0] px-[0.6rem] py-[0.2rem] text-center text-[0.72rem] text-[#aaa]"
+              >
+                mrtrestle.com.au
               </div>
             </div>
-            <CardContent className="p-5">
-              <div class="mb-2 flex items-center justify-between">
-                <Badge
-                  className="h-auto rounded-full bg-[#fef3eb] px-[0.6rem] py-[0.2rem] text-[0.7rem] font-semibold uppercase tracking-[0.06em] text-[#e07a38]"
-                  >Web Platform</Badge
-                >
-                <span class="text-[0.75rem] text-[#aaa]">2025</span>
-              </div>
-              <h2
-                class="mb-1 text-[1.3rem] font-semibold tracking-[-0.02em] text-[#111] font-['Fraunces',serif]"
+            <div class="overflow-hidden bg-[#f0f0f0]">
+              <img
+                src="https://mrtrestle.com.au/og-image.jpg"
+                alt="MrTrestle - Brisbane trestle hire and scaffold equipment rental"
+                class="block w-full transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                loading="lazy"
+                onerror={`this.onerror=null;this.src='${mrtrestleImg.src}'`}
+              />
+            </div>
+          </div>
+          <CardContent className="p-5">
+            <div class="mb-2 flex items-center justify-between">
+              <Badge
+                className="h-auto rounded-full bg-[#fef3eb] px-[0.6rem] py-[0.2rem] text-[0.7rem] font-semibold uppercase tracking-[0.06em] text-[#e07a38]"
+                >Web Platform</Badge
               >
-                MrTrestle
-              </h2>
-              <p class="mb-3 text-[0.85rem] leading-[1.55] text-[#777]">
-                My brothers equipment hire company. Features an instant quote
-                and online booking system. Admin dashboard for managing bookings
-                and inventory.
-              </p>
-              <span
-                class="inline-block text-[0.8rem] font-semibold text-[#e07a38]"
-                >Visit site ↗</span
-              >
-            </CardContent>
-          </Card>
-        </a>
+              <span class="text-[0.75rem] text-[#aaa]">2025</span>
+            </div>
+            <h2
+              class="mb-1 text-[1.3rem] font-semibold tracking-[-0.02em] text-[#111] font-['Fraunces',serif]"
+            >
+              MrTrestle
+            </h2>
+            <p class="mb-3 text-[0.85rem] leading-[1.55] text-[#777]">
+              My brothers equipment hire company. Features an instant quote and
+              online booking system. Admin dashboard for managing bookings and
+              inventory.
+            </p>
+            <div class="mt-1 flex items-end justify-between gap-0">
+              <ExternalLinkLabel />
+              <TechStackIcons
+                client:idle
+                stack={[VERCEL, TURSO, REDIS, NEXT_JS, TAILWIND, POSTHOG]}
+              />
+            </div>
+          </CardContent>
+        </ProjectCard>
 
-        <a
+        <ProjectCard
           href="https://coinstacker.com.au"
-          target="_blank"
-          rel="noopener"
-          class="group block animate-[up_0.6s_cubic-bezier(0.23,1,0.32,1)_0.25s_both]"
+          class="animate-[up_0.6s_cubic-bezier(0.23,1,0.32,1)_0.25s_both]"
         >
-          <Card
-            className="overflow-hidden rounded-2xl border-[#eee] bg-white gap-0 py-0 text-inherit shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] transition-all duration-300 group-hover:-translate-y-[3px] group-hover:shadow-[0_2px_8px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.06)]"
-          >
-            <div class="border-b border-[#eee]">
-              <div
-                class="flex items-center gap-3 border-b border-[#eee] bg-[#f8f8f8] px-[0.85rem] py-[0.6rem]"
-              >
-                <div class="flex gap-[5px]">
-                  <span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"></span>
-                  <span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"></span>
-                  <span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"></span>
-                </div>
-                <div
-                  class="flex-1 rounded bg-[#f0f0f0] px-[0.6rem] py-[0.2rem] text-center text-[0.72rem] text-[#aaa]"
-                >
-                  coinstacker.com.au
-                </div>
+          <div class="border-b border-[#eee]">
+            <div
+              class="flex items-center gap-3 border-b border-[#eee] bg-[#f8f8f8] px-[0.85rem] py-[0.6rem]"
+            >
+              <div class="flex gap-[5px]">
+                <span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"></span>
+                <span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"></span>
+                <span class="h-[9px] w-[9px] rounded-full bg-[#ddd]"></span>
               </div>
-              <div class="overflow-hidden bg-[#f0f0f0]">
-                <Image
-                  src={coinStackerImg}
-                  alt="CoinStacker - Australian crypto price aggregator"
-                  class="block w-full transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-                  loading="lazy"
-                />
+              <div
+                class="flex-1 rounded bg-[#f0f0f0] px-[0.6rem] py-[0.2rem] text-center text-[0.72rem] text-[#aaa]"
+              >
+                coinstacker.com.au
               </div>
             </div>
-            <CardContent className="p-5">
-              <div class="mb-2 flex items-center justify-between">
-                <Badge
-                  className="h-auto rounded-full bg-[#fef3eb] px-[0.6rem] py-[0.2rem] text-[0.7rem] font-semibold uppercase tracking-[0.06em] text-[#e07a38]"
-                  >FinTech</Badge
-                >
-                <span class="text-[0.75rem] text-[#aaa]">2025</span>
-              </div>
-              <h2
-                class="mb-1 text-[1.3rem] font-semibold tracking-[-0.02em] text-[#111] font-['Fraunces',serif]"
+            <div class="overflow-hidden bg-[#f0f0f0]">
+              <Image
+                src={coinStackerImg}
+                alt="CoinStacker - Australian crypto price aggregator"
+                class="block w-full transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <CardContent className="p-5">
+            <div class="mb-2 flex items-center justify-between">
+              <Badge
+                className="h-auto rounded-full bg-[#fef3eb] px-[0.6rem] py-[0.2rem] text-[0.7rem] font-semibold uppercase tracking-[0.06em] text-[#e07a38]"
+                >FinTech</Badge
               >
-                CoinStacker
-              </h2>
-              <p class="mb-3 text-[0.85rem] leading-[1.55] text-[#777]">
-                Australian crypto price aggregator. Compare live exchange
-                prices, find the best deal, stack more coins.
-              </p>
-              <span
-                class="inline-block text-[0.8rem] font-semibold text-[#e07a38]"
-                >Visit site ↗</span
-              >
-            </CardContent>
-          </Card>
-        </a>
+              <span class="text-[0.75rem] text-[#aaa]">2025</span>
+            </div>
+            <h2
+              class="mb-1 text-[1.3rem] font-semibold tracking-[-0.02em] text-[#111] font-['Fraunces',serif]"
+            >
+              CoinStacker
+            </h2>
+            <p class="mb-3 text-[0.85rem] leading-[1.55] text-[#777]">
+              Australian crypto price aggregator. Compare live exchange prices,
+              find the best deal, stack more coins.
+            </p>
+            <div class="mt-1 flex items-end justify-between gap-0">
+              <ExternalLinkLabel />
+              <TechStackIcons
+                client:idle
+                stack={[VERCEL, NEXT_JS, TAILWIND, POSTHOG]}
+              />
+            </div>
+          </CardContent>
+        </ProjectCard>
 
-        <Card
-          className="overflow-hidden rounded-2xl border-[#eee] bg-white gap-0 py-0 text-inherit shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.03)] transition-shadow duration-300 hover:shadow-[0_2px_8px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.06)] animate-[up_0.6s_cubic-bezier(0.23,1,0.32,1)_0.35s_both]"
+        <ProjectCard
+          class="animate-[up_0.6s_cubic-bezier(0.23,1,0.32,1)_0.35s_both]"
         >
           <div class="border-b border-[#eee]">
             <div
@@ -277,13 +288,19 @@ import { Logos } from "@/components/icons/Logo";
             </h2>
             <p class="mb-3 text-[0.85rem] leading-[1.55] text-[#777]">
               Personal arbitrage bot w/ trading overview & analytics dashboard.
-              <span class="text-[0.75rem] text-[#aaa]">(not public)</span>
             </p>
-            <span class="inline-block text-[0.8rem] font-normal text-[#aaa]"
-              >Screenshots coming soon</span
-            >
+
+            <div class="mt-1 flex items-end justify-between gap-0">
+              <span class="inline-block text-[0.8rem] font-normal text-[#aaa]"
+                >(not public)</span
+              >
+              <TechStackIcons
+                client:idle
+                stack={[VULTR, NEXT_JS, BUN, PLAYWRIGHT, TAILWIND]}
+              />
+            </div>
           </CardContent>
-        </Card>
+        </ProjectCard>
       </section>
 
       <section
@@ -452,74 +469,6 @@ import { Logos } from "@/components/icons/Logo";
       </footer>
     </main>
 
-    <style is:global>
-      @keyframes up {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes logoMorph {
-        0%,
-        18% {
-          opacity: 1;
-          filter: blur(0) brightness(1);
-          transform: scale(1);
-        }
-
-        22%,
-        100% {
-          opacity: 0;
-          filter: blur(7px) brightness(1.15);
-          transform: scale(0.9);
-        }
-      }
-
-      .logo-morph {
-        position: relative;
-        overflow: hidden;
-      }
-
-      .logo-morph__item {
-        position: absolute;
-        inset: 0;
-        display: grid;
-        place-items: center;
-        opacity: 0;
-        animation: logoMorph 7.5s ease-in-out infinite;
-        will-change: transform, filter, opacity;
-      }
-
-      .logo-morph__item :is(svg, img) {
-        width: 1.45rem;
-        height: 1.45rem;
-      }
-
-      .logo-morph__item:nth-child(1) {
-        animation-delay: 0s;
-      }
-
-      .logo-morph__item:nth-child(2) {
-        animation-delay: 1.5s;
-      }
-
-      .logo-morph__item:nth-child(3) {
-        animation-delay: 3s;
-      }
-
-      .logo-morph__item:nth-child(4) {
-        animation-delay: 4.5s;
-      }
-
-      .logo-morph__item:nth-child(5) {
-        animation-delay: 6s;
-      }
-    </style>
     <Analytics />
   </body>
 </html>
