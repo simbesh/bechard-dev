@@ -201,6 +201,30 @@
   }
 }
 
+@keyframes zoomOverlayIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+
+  to {
+    opacity: 1;
+    backdrop-filter: blur(12px);
+  }
+}
+
+@keyframes zoomImageIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @keyframes logoMorph {
   0%,
   18% {

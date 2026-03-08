@@ -21,11 +21,14 @@ import TechStackIcons, {
   PLAYWRIGHT,
   POSTHOG,
   REDIS,
+  SQLITE,
   TAILWIND,
   TURSO,
   VERCEL,
   VULTR,
 } from "@/components/TechStackIcons";
+import { ImageZoom } from "@/components/kibo-ui/image-zoom";
+
 ---
 
 <html lang="en">
@@ -261,10 +264,13 @@ import TechStackIcons, {
               </div>
             </div>
             <div class="overflow-hidden bg-[#f0f0f0]">
-              <Image
-                src={arbyDashImg}
+              <ImageZoom
+                client:load
+                src={arbyDashImg.src}
                 alt="Arby dashboard screenshot"
-                class="block w-full"
+                width={arbyDashImg.width}
+                height={arbyDashImg.height}
+                imgClassName="block w-full"
                 loading="lazy"
               />
             </div>
@@ -273,7 +279,7 @@ import TechStackIcons, {
             <div class="mb-2 flex items-center justify-between gap-2">
               <Badge
                 className="h-auto rounded-full bg-[#fef3eb] px-[0.6rem] py-[0.2rem] text-[0.7rem] font-semibold uppercase tracking-[0.06em] text-[#e07a38]"
-                >Private Bot & Dashboard</Badge
+                >Private Bot / Dashboard / Control Plane</Badge
               >
               <Badge
                 variant="outline"
@@ -296,7 +302,7 @@ import TechStackIcons, {
               >
               <TechStackIcons
                 client:idle
-                stack={[VULTR, NEXT_JS, BUN, PLAYWRIGHT, TAILWIND]}
+                stack={[VULTR, SQLITE, NEXT_JS, BUN, PLAYWRIGHT, TAILWIND]}
               />
             </div>
           </CardContent>

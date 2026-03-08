@@ -16,6 +16,7 @@ export const POSTHOG = "PostHog" as const;
 export const VULTR = "Vultr" as const;
 export const BUN = "Bun" as const;
 export const PLAYWRIGHT = "Playwright" as const;
+export const SQLITE = "SQLite" as const;
 
 export const TECH_STACK_STRINGS = {
   VERCEL,
@@ -27,6 +28,7 @@ export const TECH_STACK_STRINGS = {
   VULTR,
   BUN,
   PLAYWRIGHT,
+  SQLITE,
 } as const;
 
 export type TechStackString =
@@ -38,7 +40,8 @@ export type TechStackString =
   | typeof POSTHOG
   | typeof VULTR
   | typeof BUN
-  | typeof PLAYWRIGHT;
+  | typeof PLAYWRIGHT
+  | typeof SQLITE;
 
 export type TechStackIconItem = {
   label: string;
@@ -83,6 +86,11 @@ const techStackItemsByString: Record<TechStackString, TechStackIconItem> = {
     label: PLAYWRIGHT,
     icon: Logos.Playwright,
     iconClassName: "h-6 w-auto",
+  },
+  [SQLITE]: {
+    label: SQLITE,
+    icon: Logos.SQLite,
+    iconClassName: "h-4 w-auto",
   },
 };
 
