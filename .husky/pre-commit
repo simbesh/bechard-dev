@@ -1,9 +1,17 @@
-bun test
-
-# ultracite
 #!/bin/sh
+
 # Exit on any error
 set -e
+
+TEST_FILES=$(git ls-files -- "*.test.*" "*.spec.*" "*_test_*" "*_spec_*")
+
+if [ -n "$TEST_FILES" ]; then
+  bun test
+else
+  echo "No tests found, skipping bun test"
+fi
+
+# ultracite
 
 # Check if there are any staged files
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR)
