@@ -1,0 +1,198 @@
+---
+import { Image } from "astro:assets"
+import portrait from "@/assets/me-shrugging.png"
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <meta content="noindex, follow" name="robots">
+        <title>Page not found - Simon Bechard</title>
+        <link href="/favicon.ico" rel="icon">
+        <link href="https://fonts.googleapis.com" rel="preconnect">
+        <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap"
+            rel="stylesheet"
+        >
+    </head>
+    <body>
+        <header>
+            <a class="wordmark" href="/">Simon Bechard<span>Fullstack developer</span></a>
+            <a href="mailto:simon@bechard.dev">Say hello</a>
+        </header>
+        <main>
+            <div class="message">
+                <p class="eyebrow">404 / Page not found</p>
+                <h1>Well, this is<br><em>awkward.</em></h1>
+                <p class="description">I make websites. Apparently, this page isn't one of them.</p>
+                <a class="home-link" href="/"><span aria-hidden="true">←</span> Back to home</a>
+            </div>
+            <figure>
+                <Image
+                    alt="Simon shrugging with both palms up and a puzzled smile"
+                    fetchpriority="high"
+                    loading="eager"
+                    sizes="(max-width: 700px) 100vw, 55vw"
+                    src={portrait}
+                    width={900}
+                    widths={[450, 900, 1350]}
+                />
+                <figcaption>Your guess is as good as mine.</figcaption>
+            </figure>
+        </main>
+        <footer>
+            <span>Wrong turn? It happens.</span>
+            <a href="/#work">See what I've been working on <span aria-hidden="true">↗</span></a>
+        </footer>
+    </body>
+</html>
+
+<style>
+    :global(*) {
+        box-sizing: border-box;
+    }
+    :global(body) {
+        margin: 0;
+    }
+    body {
+        --paper: #f4f1e9;
+        --ink: #282d26;
+        --muted: #606457;
+        --accent: #5a672f;
+        --line: #cbcdbf;
+        display: flex;
+        flex-direction: column;
+        min-height: 100svh;
+        padding: 0 40px;
+        font-family: "DM Sans", sans-serif;
+        line-height: 1.6;
+        color: var(--ink);
+        background: var(--paper);
+    }
+    a {
+        color: inherit;
+        text-underline-offset: 5px;
+    }
+    a:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+    }
+    a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 6px;
+    }
+    header,
+    main,
+    footer {
+        width: 100%;
+        max-width: 1100px;
+        margin-inline: auto;
+    }
+    header {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 32px 0;
+        border-bottom: 1px solid var(--line);
+    }
+    header a {
+        font-size: 14px;
+        text-decoration: none;
+    }
+    .wordmark {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .wordmark span {
+        display: block;
+        margin-top: 4px;
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--muted);
+    }
+    main {
+        display: grid;
+        flex: 1;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 32px;
+        align-items: center;
+        padding-block: 64px;
+    }
+    .eyebrow {
+        margin: 0 0 24px;
+        font-size: 12px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+    h1 {
+        margin: 0;
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(52px, 6.5vw, 84px);
+        font-weight: 400;
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+    }
+    h1 em {
+        color: var(--accent);
+    }
+    .description {
+        max-width: 30ch;
+        margin: 28px 0;
+        color: var(--muted);
+    }
+    .home-link {
+        display: inline-flex;
+        gap: 12px;
+        align-items: center;
+        min-height: 44px;
+        font-weight: 600;
+    }
+    figure {
+        margin: 0;
+    }
+    figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid var(--line);
+    }
+    figcaption {
+        padding-top: 16px;
+        font-size: 12px;
+        color: var(--muted);
+        text-align: center;
+    }
+    footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 24px;
+        justify-content: space-between;
+        padding-block: 28px;
+        font-size: 13px;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+    }
+    @media (max-width: 700px) {
+        body {
+            padding-inline: 22px;
+        }
+        header {
+            padding-block: 22px;
+        }
+        main {
+            grid-template-columns: 1fr;
+            gap: 36px;
+            padding-block: 40px;
+        }
+        figure {
+            width: 100%;
+            max-width: 480px;
+            margin-inline: auto;
+        }
+    }
+</style>

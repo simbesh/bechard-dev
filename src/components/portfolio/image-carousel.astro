@@ -1,0 +1,140 @@
+---
+import { getImage, Image } from "astro:assets"
+import type { ImageMetadata } from "astro"
+
+interface Props {
+    label: string
+    slides: { image: ImageMetadata; alt: string }[]
+}
+const { label, slides } = Astro.props
+const fullImages = await Promise.all(slides.map((slide) => getImage({ src: slide.image, format: "webp" })))
+---
+
+<section aria-label={label} aria-roledescription="carousel" class="carousel" data-carousel>
+    <div
+        aria-label="Screenshots. Use left and right arrow keys to browse."
+        class="slides"
+        data-slides
+        role="group"
+        tabindex="0"
+    >
+        {slides.map((slide, index) => (
+            <figure aria-label={`${index + 1} of ${slides.length}`} class="slide">
+                <a aria-label={`View ${slide.alt} fullscreen`} data-gallery={label} data-zoom-image href={fullImages[index].src}>
+                <Image alt={slide.alt} loading="lazy" sizes="(max-width: 650px) calc(100vw - 44px), 680px" src={slide.image} width={1280} widths={[400, 680, 960, 1280]} />
+                </a>
+            </figure>
+        ))}
+    </div>
+    <div class="controls" data-controls hidden>
+        <span aria-live="polite" aria-atomic="true" data-status>1 / {slides.length}</span>
+        <div class="buttons">
+            <button aria-label="Previous screenshot" data-previous type="button">←</button>
+            <button aria-label="Next screenshot" data-next type="button">→</button>
+        </div>
+    </div>
+</section>
+
+<script>
+    for (const carousel of document.querySelectorAll<HTMLElement>("[data-carousel]")) {
+        const track = carousel.querySelector<HTMLElement>("[data-slides]")
+        const controls = carousel.querySelector<HTMLElement>("[data-controls]")
+        const status = carousel.querySelector<HTMLElement>("[data-status]")
+        if (!(track && controls && status)) {
+            continue
+        }
+        const slides = Array.from(track.querySelectorAll<HTMLElement>(".slide"))
+        let current = 0
+        const show = (index: number): void => {
+            current = (index + slides.length) % slides.length
+            track.scrollTo({
+                left: current * track.clientWidth,
+                behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+            })
+        }
+        carousel.querySelector("[data-previous]")?.addEventListener("click", () => show(current - 1))
+        carousel.querySelector("[data-next]")?.addEventListener("click", () => show(current + 1))
+        track.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+                event.preventDefault()
+                show(current + (event.key === "ArrowLeft" ? -1 : 1))
+            }
+        })
+        track.addEventListener(
+            "scroll",
+            () => {
+                current = Math.round(track.scrollLeft / track.clientWidth)
+                status.textContent = `${current + 1} / ${slides.length}`
+            },
+            { passive: true },
+        )
+        controls.hidden = false
+    }
+</script>
+
+<style>
+    .carousel {
+        min-width: 0;
+    }
+    .slides {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+    .slides::-webkit-scrollbar {
+        display: none;
+    }
+    .slide {
+        flex: 0 0 100%;
+        min-width: 0;
+        margin: 0;
+        scroll-snap-align: start;
+    }
+    .slide img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1280 / 1118;
+        object-fit: contain;
+        background: #d7dfeb;
+    }
+    .controls {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 8px;
+    }
+    .controls[hidden] {
+        display: none;
+    }
+    [data-status] {
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+        color: var(--muted);
+    }
+    .buttons {
+        display: flex;
+        gap: 8px;
+    }
+    button {
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        font: inherit;
+        font-size: 20px;
+        color: var(--ink);
+        cursor: pointer;
+        background: transparent;
+        border: 1px solid var(--line);
+    }
+    button:hover {
+        background: var(--plate);
+    }
+    button:focus-visible,
+    .slides:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: -2px;
+    }
+</style>

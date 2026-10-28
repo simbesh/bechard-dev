@@ -17,5 +17,17 @@
       "semicolons": "asNeeded",
       "trailingCommas": "all"
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.astro"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "useJsxKeyInIterable": "off"
+          }
+        }
+      }
+    }
+  ]
 }

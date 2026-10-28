@@ -1,0 +1,105 @@
+---
+import { getImage, Image } from "astro:assets"
+import type { projects } from "./data"
+import ImageCarousel from "./image-carousel.astro"
+
+interface Props {
+    project: (typeof projects)[number]
+}
+const { project } = Astro.props
+const fullImage = await getImage({ src: project.image, format: "webp" })
+---
+
+<article class="project">
+    {project.slides ? (
+        <ImageCarousel label={`${project.name} screenshots`} slides={project.slides} />
+    ) : (
+        <div class="project-image"><a aria-label={`View ${project.name} screenshot fullscreen`} data-gallery={project.name} data-zoom-image href={fullImage.src}><Image alt={project.alt} loading="lazy" src={project.image} width={1200} /></a></div>
+    )}
+    <div class="project-info">
+        <div class="project-title">
+            <h3>{project.name}</h3>
+            {project.year && <span>{project.year}</span>}
+        </div>
+        <p class="project-description">{project.description}</p>
+        <div class="project-bottom">
+            <small>{project.tech}</small>
+            {project.href ? <a href={project.href} rel="noopener" target="_blank">Visit website <svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="16"><path d="M5 19 19 5M5 5h14v14"/></svg></a> : <span class="private">Not public</span>}
+        </div>
+    </div>
+</article>
+<style>
+    .project {
+        min-width: 0;
+    }
+    .project-image {
+        overflow: hidden;
+        background: var(--plate);
+    }
+    .project-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1.8;
+        object-fit: cover;
+        object-position: top;
+    }
+    .project-info {
+        padding: 23px 0 0;
+    }
+    .project-title {
+        display: flex;
+        gap: 20px;
+        align-items: baseline;
+        justify-content: space-between;
+    }
+    h3 {
+        margin: 0;
+        font: inherit;
+        font-size: 30px;
+        font-weight: 600;
+        letter-spacing: -0.035em;
+    }
+    .project-title span {
+        font-size: 12px;
+        color: var(--muted);
+    }
+    .project-description {
+        max-width: 58ch;
+        margin: 16px 0 20px;
+        font-size: 16px;
+        line-height: 1.7;
+    }
+    .project-bottom {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    small,
+    .private {
+        font-size: 12px;
+        color: var(--muted);
+    }
+    a {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        font-size: 13px;
+        color: inherit;
+        text-underline-offset: 5px;
+    }
+    a:hover {
+        color: var(--accent);
+    }
+    a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 5px;
+    }
+    @media (max-width: 600px) {
+        h3 {
+            font-size: 26px;
+        }
+    }
+</style>

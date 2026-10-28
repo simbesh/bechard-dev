@@ -1,0 +1,145 @@
+<dialog aria-label="Fullscreen image viewer" class="image-viewer" data-image-viewer>
+    <div class="viewer-toolbar">
+        <span aria-atomic="true" aria-live="polite" data-viewer-status></span>
+        <button aria-label="Close image viewer" data-viewer-close type="button">Close ×</button>
+    </div>
+    <img alt="" data-viewer-image>
+    <div class="viewer-navigation" data-viewer-navigation>
+        <button aria-label="Previous image" data-viewer-previous type="button">←</button>
+        <button aria-label="Next image" data-viewer-next type="button">→</button>
+    </div>
+</dialog>
+
+<script>
+    function setupImageViewer(): void {
+        const dialog = document.querySelector<HTMLDialogElement>("[data-image-viewer]")
+        const image = dialog?.querySelector<HTMLImageElement>("[data-viewer-image]")
+        const status = dialog?.querySelector<HTMLElement>("[data-viewer-status]")
+        const navigation = dialog?.querySelector<HTMLElement>("[data-viewer-navigation]")
+        if (!(dialog && image && status && navigation)) {
+            return
+        }
+        const triggers = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-zoom-image]"))
+        let gallery: HTMLAnchorElement[] = []
+        let current = 0
+        let opener: HTMLAnchorElement | undefined
+        let previousOverflow = ""
+
+        const show = (index: number): void => {
+            current = (index + gallery.length) % gallery.length
+            const trigger = gallery[current]
+            if (!trigger) {
+                return
+            }
+            image.src = trigger.href
+            image.alt = trigger.querySelector("img")?.alt ?? "Project screenshot"
+            status.textContent = `${current + 1} / ${gallery.length}`
+            navigation.hidden = gallery.length < 2
+        }
+        for (const trigger of triggers) {
+            trigger.addEventListener("click", (event) => {
+                if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
+                    return
+                }
+                event.preventDefault()
+                opener = trigger
+                gallery = triggers.filter((item) => item.dataset.gallery === trigger.dataset.gallery)
+                show(gallery.indexOf(trigger))
+                previousOverflow = document.documentElement.style.overflow
+                document.documentElement.style.overflow = "hidden"
+                dialog.showModal()
+            })
+        }
+        dialog.querySelector("[data-viewer-close]")?.addEventListener("click", () => dialog.close())
+        dialog.querySelector("[data-viewer-previous]")?.addEventListener("click", () => show(current - 1))
+        dialog.querySelector("[data-viewer-next]")?.addEventListener("click", () => show(current + 1))
+        dialog.addEventListener("click", (event) => {
+            if (event.target === dialog) {
+                dialog.close()
+            }
+        })
+        dialog.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+                event.preventDefault()
+                show(current + (event.key === "ArrowLeft" ? -1 : 1))
+            }
+        })
+        dialog.addEventListener("close", () => {
+            document.documentElement.style.overflow = previousOverflow
+            opener?.focus({ preventScroll: true })
+        })
+    }
+    setupImageViewer()
+</script>
+
+<style>
+    .image-viewer {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        max-width: none;
+        height: 100dvh;
+        max-height: none;
+        padding: 16px;
+        margin: 0;
+        color: #f4f1e9;
+        background: rgb(16 19 15 / 97%);
+        border: 0;
+    }
+    .image-viewer[open] {
+        display: grid;
+        grid-template-rows: 44px minmax(0, 1fr) 44px;
+        gap: 12px;
+    }
+    .image-viewer::backdrop {
+        background: #10130f;
+    }
+    .viewer-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 13px;
+    }
+    .image-viewer img {
+        display: block;
+        align-self: center;
+        justify-self: center;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        object-fit: contain;
+    }
+    .viewer-navigation {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+    }
+    .viewer-navigation[hidden] {
+        display: none;
+    }
+    button {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 8px 16px;
+        font: inherit;
+        color: inherit;
+        cursor: pointer;
+        background: #242920;
+        border: 1px solid #626b58;
+    }
+    button:hover {
+        background: #38412e;
+    }
+    button:focus-visible {
+        outline: 2px solid #c8d796;
+        outline-offset: 2px;
+    }
+    :global([data-zoom-image]) {
+        display: block;
+        cursor: zoom-in;
+    }
+    :global([data-zoom-image]:focus-visible) {
+        outline: 2px solid var(--accent);
+        outline-offset: -2px;
+    }
+</style>
